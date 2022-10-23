@@ -71,22 +71,22 @@
                                     <p class="mb-0">Enter your email and password to register</p>
                                 </div>
                                 <div class="card-body">
-                                    <form action="" method="">
+                                    <form action="{{ route('register') }}" method="POST">
                                         @csrf
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Name</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" placeholder="Full Name">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
-                                            <input type="email" class="form-control">
+                                            <input type="email" class="form-control" placeholder="Email">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Password</label>
                                             <input type="password" class="form-control">
                                         </div>
                                         <div class="text-center">
-                                            <button type="button"
+                                            <button type="submit"
                                                 class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign
                                                 Up</button>
                                         </div>
