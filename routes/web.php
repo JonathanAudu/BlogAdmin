@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/register', [AuthController::class, 'registerpage']);
 
 Route::get('/login', [AuthController::class, 'loginpage']);
