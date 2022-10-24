@@ -35,13 +35,13 @@
                             <ul class="navbar-nav mx-auto">
 
                                 <li class="nav-item">
-                                    <a class="nav-link me-2" href="../pages/sign-up.html">
+                                    <a class="nav-link me-2" href="/register">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                                         Sign Up
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link me-2" href="../pages/sign-in.html">
+                                    <a class="nav-link me-2" href="/login">
                                         <i class="fas fa-key opacity-6 text-dark me-1"></i>
                                         Sign In
                                     </a>
@@ -85,21 +85,29 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="/login" method="POST" >
+                                @if (session('message'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+                                <form action="/login" method="POST">
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
-                                        <input name="email" type="email" autocomplete="off" class="form-control" placeholder="Valid Email">
+                                        <input name="email" type="email" autocomplete="off" class="form-control"
+                                            placeholder="Valid Email">
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
-                                        <input name="password" type="password" autocomplete="off" class="form-control" placeholder="password">
+                                        <input name="password" type="password" autocomplete="off" class="form-control"
+                                            placeholder="password">
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Login</button>
+                                        <button type="submit"
+                                            class="btn bg-gradient-primary w-100 my-4 mb-2">Login</button>
                                     </div>
                                     <p class="mt-4 text-sm text-center">
                                         Don't have an account?
-                                        <a href=""
-                                            class="text-primary text-gradient font-weight-bold">Sign up</a>
+                                        <a href="" class="text-primary text-gradient font-weight-bold">Sign
+                                            up</a>
                                     </p>
                                 </form>
                             </div>

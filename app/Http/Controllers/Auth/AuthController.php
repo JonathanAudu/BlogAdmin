@@ -70,21 +70,44 @@ class AuthController extends Controller
         ]);
 
 
-        $user = User::where('email', '=', $request->email) -> first();
+        if (Auth::check($data)) {
+            return $data;
 
-        if (Auth::attempt($data)) {
-            $request->session()->regenerate();
-
-            $request->session()->put('loginId', $user->id);
-
-            return redirect()->action(
-                [HomeController::class, 'index']
-            );
+            if (Auth::user()->is_admin == 1) {
+                return view('/admin');
+            } else {
+                return redirect('/home')->with('message', 'Access Denied! You are not an Admin');
+            }
+        } else {
+            return redirect()->action([AuthController::class, 'loginpage']);
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-            'password'=> 'Incorrect password'
-        ]);
+        // $user = User::where('email', '=', $request->email)->first();
+
+        // if (Auth::attempt($data)) {
+        //     $request->session()->regenerate();
+
+        //     $request->session()->put('loginId', $user->id);
+
+        //     return redirect()->action(
+        //         [HomeController::class, 'index']
+        //     );
+        // }
+
+        // return back()->withErrors([
+        //     'email' => 'The provided credentials do not match our records.',
+        //     'password'=> 'Incorrect password'
+        // ]);
+    }
+
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return view('welcome');
     }
 }

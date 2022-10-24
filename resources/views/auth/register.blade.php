@@ -34,7 +34,7 @@
                         <div class="collapse navbar-collapse" id="navigation">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link me-4" href="">
+                                    <a class="nav-link me-4" href="/register">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                                         Sign Up
                                     </a>
@@ -71,16 +71,24 @@
                                     <p class="mb-0">Enter your email and password to register</p>
                                 </div>
                                 <div class="card-body">
+                                    @if (session('message'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ session('message') }}
+                                        </div>
+                                    @endif
                                     <form action="/register" method="POST">
                                         @csrf
                                         <div class="input-group input-group-outline mb-3">
-                                            <input  name= "name" type="text" autocomplete="off" class="form-control" placeholder="Full Name">
+                                            <input name="name" type="text" autocomplete="off" class="form-control"
+                                                placeholder="Full Name">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <input  name= "email" type="email" autocomplete="off" class="form-control" placeholder="Email">
+                                            <input name="email" type="email" autocomplete="off" class="form-control"
+                                                placeholder="Email">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <input  name= "password" type="password" autocomplete="off" class="form-control" placeholder="password">
+                                            <input name="password" type="password" autocomplete="off"
+                                                class="form-control" placeholder="password">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit"

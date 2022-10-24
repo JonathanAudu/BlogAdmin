@@ -18,29 +18,15 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
+        if (Auth::check()) {
 
-            if(Auth::user()->is_admin == 1){
+            if (Auth::user()->is_admin == 1) {
                 return $next($request);
-            }else {
+            } else {
                 return redirect('/home')->with('message', 'Access Denied! You are not an Admin');
             }
-        }else{
+        } else {
             return redirect()->action([AuthController::class, 'loginpage']);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+}

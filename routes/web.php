@@ -3,7 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-
+use App\Http\Controllers\Auth\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,14 +32,15 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
 
+Route::get('/home', [HomeController::class, 'index'])->name('index');
 
 
-// Route::get('/admin', function () {
-//     return view('admin.dashboard');
-// });
+
 
 Route::middleware(['is_admin'])->group (function() {
-
-Route::get('/home', [AuthController::class, 'index'])->name('index');
+    
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
 
 });
