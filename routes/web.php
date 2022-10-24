@@ -1,7 +1,9 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,14 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+
+
+// Route::get('/admin', function () {
+//     return view('admin.dashboard');
+// });
+
+Route::middleware(['is_admin'])->group (function() {
+
+Route::get('/home', [AuthController::class, 'index'])->name('index');
+
 });

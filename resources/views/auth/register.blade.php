@@ -40,7 +40,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link me-2" href="">
+                                    <a class="nav-link me-2" href="/login">
                                         <i class="fas fa-key opacity-6 text-dark me-1"></i>
                                         Sign In
                                     </a>
@@ -71,19 +71,16 @@
                                     <p class="mb-0">Enter your email and password to register</p>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('register') }}" method="POST">
+                                    <form action="/register" method="POST">
                                         @csrf
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Name</label>
-                                            <input type="text" class="form-control" placeholder="Full Name">
+                                            <input  name= "name" type="text" autocomplete="off" class="form-control" placeholder="Full Name">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input type="email" class="form-control" placeholder="Email">
+                                            <input  name= "email" type="email" autocomplete="off" class="form-control" placeholder="Email">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Password</label>
-                                            <input type="password" class="form-control">
+                                            <input  name= "password" type="password" autocomplete="off" class="form-control" placeholder="password">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit"

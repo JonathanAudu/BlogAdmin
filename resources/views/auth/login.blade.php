@@ -85,15 +85,13 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('login') }}" method="POST" class="text-start">
+                                <form action="/login" method="POST" >
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" placeholder="Valid Email">
+                                        <input name="email" type="email" autocomplete="off" class="form-control" placeholder="Valid Email">
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Password</label>
-                                        <input type="password" class="form-control">
+                                        <input name="password" type="password" autocomplete="off" class="form-control" placeholder="password">
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Login</button>
