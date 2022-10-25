@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\AdminController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\Auth\HomeController;
 
 class AuthController extends Controller
 {
@@ -39,11 +39,9 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
 
-            return back()->with( [
+            return back()->with([
                 'message' => $validator->errors(),
             ], 'something went wrong');
-
-
         } else {
             $user = new User;
             $user->name = $request->name;
@@ -69,16 +67,22 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-
-        if (Auth::check($data)) {
-            return $data;
+        if (Auth::attempt($data)) {
 
             if (Auth::user()->is_admin == 1) {
-                return view('/admin');
+
+                $request->session()->regenerate();
+
+                $request->session()->put('loginId', Auth::user()->id);
+
+                return redirect()->action(
+                    [AdminController::class, 'index']
+                );
             } else {
                 return redirect('/home')->with('message', 'Access Denied! You are not an Admin');
             }
         } else {
+
             return redirect()->action([AuthController::class, 'loginpage']);
         }
 
@@ -101,7 +105,8 @@ class AuthController extends Controller
     }
 
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
 
         $request->session()->invalidate();

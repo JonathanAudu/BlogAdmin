@@ -1,9 +1,12 @@
 <?php
 
-
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\HomeController;
+
+
+use App\Http\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +41,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('index');
 
 
 Route::middleware(['is_admin'])->group (function() {
-    
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
+
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+
 
 });

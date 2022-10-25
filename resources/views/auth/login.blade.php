@@ -90,7 +90,7 @@
                                         {{ session('message') }}
                                     </div>
                                 @endif
-                                <form action="/login" method="POST">
+                                <form action="{{ route('login')}}" method="POST">
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
                                         <input name="email" type="email" autocomplete="off" class="form-control"
