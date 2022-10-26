@@ -4,8 +4,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\HomeController;
-
-
+use App\Http\Controllers\Auth\UserController;
 use App\Http\Middleware;
 
 /*
@@ -36,6 +35,8 @@ Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('index');
+
+Route::get('/update-user', [UserController::class, 'updateUser'])->name('update');
 
 
 

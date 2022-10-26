@@ -17,11 +17,20 @@
                                     </div>
                                 @endif
                             </h6>
+                            <h4 class="text-center">USER PAGE</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="{{ route('update')}}">
+            <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover"
+                data-placement="bottom" data-content="Update User's Details" class="text-center">
+                Update User
+            </button>
+        </a>
     </div>
     @endsection @section('scripts')
 @endsection

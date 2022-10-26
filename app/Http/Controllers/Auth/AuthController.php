@@ -79,29 +79,12 @@ class AuthController extends Controller
                     [AdminController::class, 'index']
                 );
             } else {
-                return redirect('/home')->with('message', 'Access Denied! You are not an Admin');
+                return redirect('/home');
             }
         } else {
 
             return redirect()->action([AuthController::class, 'loginpage']);
         }
-
-        // $user = User::where('email', '=', $request->email)->first();
-
-        // if (Auth::attempt($data)) {
-        //     $request->session()->regenerate();
-
-        //     $request->session()->put('loginId', $user->id);
-
-        //     return redirect()->action(
-        //         [HomeController::class, 'index']
-        //     );
-        // }
-
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        //     'password'=> 'Incorrect password'
-        // ]);
     }
 
 
