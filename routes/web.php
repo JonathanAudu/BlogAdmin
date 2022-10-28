@@ -38,6 +38,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('index');
 
 Route::get('/update-user', [UserController::class, 'updateUser'])->name('update');
 
+Route::get('/updateprofile', [UserController::class, 'updateview']);
+
 
 
 
